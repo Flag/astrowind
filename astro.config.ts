@@ -28,7 +28,15 @@ export default defineConfig({
     output: 'server',
     adapter: vercel(),
 
-  integrations: [
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pt-br', 'fr-ca'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+  
+    integrations: [
     tailwind({
       applyBaseStyles: false,
     }),

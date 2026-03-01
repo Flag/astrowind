@@ -1,0 +1,44 @@
+---
+import { getLangFromUrl } from '~/i18n/translations';
+
+const lang = getLangFromUrl(Astro.url);
+
+const languages = [
+  { code: 'en', label: 'EN', path: '' },
+  { code: 'pt-br', label: 'PT', path: 'pt-br' },
+  { code: 'fr-ca', label: 'FR', path: 'fr-ca' },
+];
+
+// Build the equivalent URL for each language
+function getLocalizedUrl(targetLang: string, currentPath: string): string {
+  // Remove current lang prefix if present
+  const stripped = currentPath
+    .replace(/^\/pt-br/, '')
+    .replace(/^\/fr-ca/, '');
+  
+  const base = stripped || '/';
+  
+  if (targetLang === 'en') return base;
+  return `/${targetLang}${base === '/' ? '' : base}`;
+}
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="flex items-center gap-1 text-sm font-medium">
+  {languages.map(({ code, label }, index) => (
+    <span class="flex items-center gap-1">
+      {index !== 0 && <span class="text-muted">|</span>}
+      {code === lang ? (
+        <span class="text-primary font-bold">{label}</span>
+        
+        ) : (
+        
+          <a href={getLocalizedUrl(code, currentPath)}
+          class="text-muted hover:text-primary transition duration-150 ease-in-out">
+          {label}
+        </a>
+      )}
+    </span>
+  ))}
+</div>

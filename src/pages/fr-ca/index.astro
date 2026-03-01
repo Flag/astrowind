@@ -1,0 +1,108 @@
+---
+export const prerender = true;
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getLangFromUrl, useTranslations } from '~/i18n/translations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const metadata = {
+  title: 'Producentric — Pensée produit. Discipline de processus. Résultats concrets.',
+};
+---
+
+<Layout {metadata}>
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: t('cta.button'),
+        href: '/fr-ca/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Stratégie et exécution pour les équipes qui ont besoin
+      <span class="text-accent dark:text-white"> d'avancer plus vite.</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      {t('hero.subtitle')}
+    </Fragment>
+  </Hero>
+
+  <Features
+    id="features"
+    title={t('features.title')}
+    subtitle={t('features.subtitle')}
+    columns={3}
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    items={[
+      {
+        title: t('nav.productManagement'),
+        description: 'Nous apportons la pensée produit aux équipes qui ont besoin de direction et de momentum. De la découverte et l\'idéation jusqu\'à la validation client, nous vous aidons à construire les bonnes choses — et à confirmer qu\'elles fonctionnent.',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: t('nav.projectManagement'),
+        description: 'Nous gardons les initiatives complexes sur la bonne voie. Responsabilités claires, échéanciers réalistes et la discipline pour livrer dans la portée, le budget et le délai.',
+        icon: 'tabler:checklist',
+      },
+      {
+        title: t('nav.processImprovement'),
+        description: 'Nous simplifions le fonctionnement de votre organisation — des projets compacts aux grands programmes d\'entreprise. Que vous ayez besoin de flux de travail plus efficaces ou d\'un cadre agile évolutif comme SAFe, nous nous adaptons à votre réalité.',
+        icon: 'tabler:settings',
+      },
+    ]}
+  />
+
+  <Steps
+    title={t('steps.title')}
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    items={[
+      {
+        title: t('steps.understand.title'),
+        description: t('steps.understand.description'),
+        icon: 'tabler:ear',
+      },
+      {
+        title: t('steps.define.title'),
+        description: t('steps.define.description'),
+        icon: 'tabler:map',
+      },
+      {
+        title: t('steps.execute.title'),
+        description: t('steps.execute.description'),
+        icon: 'tabler:rocket',
+      },
+      {
+        title: t('steps.validate.title'),
+        description: t('steps.validate.description'),
+        icon: 'tabler:check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=987&q=80',
+      alt: 'Équipe travaillant ensemble',
+    }}
+  />
+
+  <CallToAction
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    actions={[
+      {
+        variant: 'primary',
+        text: t('cta.button'),
+        href: '/fr-ca/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">{t('cta.title')}</Fragment>
+    <Fragment slot="subtitle">{t('cta.subtitle')}</Fragment>
+  </CallToAction>
+
+</Layout>

@@ -1,0 +1,55 @@
+---
+export const prerender = true;
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getLangFromUrl, useTranslations } from '~/i18n/translations';
+import { sanityClient } from '~/sanity/client';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const service = await sanityClient.fetch(
+  `*[_type == "service" && slug.current == "project-management-pt-br"][0]`
+);
+
+const metadata = {
+  title: `${service.title} — Producentric`,
+};
+---
+
+<Layout {metadata}>
+
+  <HeroText
+    tagline={t('service.tagline')}
+    title={service.title}
+    subtitle={service.subtitle}
+  />
+
+  <Features
+    title={t('service.capabilities')}
+    columns={2}
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    items={service.capabilities.map((cap: any) => ({
+      title: cap.title,
+      description: cap.description,
+      icon: cap.icon,
+    }))}
+  />
+
+  <CallToAction
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    actions={[
+      {
+        variant: 'primary',
+        text: t('service.cta.button'),
+        href: '/pt-br/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">{service.ctaTitle}</Fragment>
+    <Fragment slot="subtitle">{service.ctaSubtitle}</Fragment>
+  </CallToAction>
+
+</Layout>

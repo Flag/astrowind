@@ -1,0 +1,53 @@
+---
+export const prerender = true;
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import { getLangFromUrl, useTranslations } from '~/i18n/translations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const metadata = {
+  title: 'Entre em Contato — Producentric',
+};
+---
+
+<Layout {metadata}>
+
+  <HeroText
+    tagline={t('contact.tagline')}
+    title={t('contact.title')}
+    subtitle={t('contact.subtitle')}
+  />
+
+  <ContactUs
+    id="form"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: t('contact.name'),
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: t('contact.email'),
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: t('contact.company'),
+      },
+    ]}
+    textarea={{
+      label: t('contact.message'),
+    }}
+    disclaimer={{
+      label: t('contact.disclaimer'),
+    }}
+    button={t('contact.button')}
+    description={t('contact.description')}
+  />
+
+</Layout>
