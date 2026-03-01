@@ -1,11 +1,17 @@
 ---
+export const prerender = true;
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { sanityClient } from '~/sanity/client';
+
+const service = await sanityClient.fetch(
+  `*[_type == "service" && slug.current == "process-improvement"][0]`
+);
 
 const metadata = {
-  title: 'Process Improvement; Producentric',
+  title: `${service.title} — Producentric`,
 };
 ---
 
@@ -13,36 +19,19 @@ const metadata = {
 
   <HeroText
     tagline="What We Do"
-    title="Process Improvement"
-    subtitle="We streamline how your organization works; from compact projects to large corporate programs. Whether you need leaner workflows or a scalable agile framework like SAFe, we meet you where you are."
+    title={service.title}
+    subtitle={service.subtitle}
   />
 
   <Features
     title="What this looks like in practice"
     columns={2}
     classes={{ container: 'py-6 md:py-8 lg:py-10' }}
-    items={[
-      {
-        title: 'Process Mapping',
-        description: 'We document how work actually flows through your organization; not how it is supposed to flow. That gap is usually where the problems live.',
-        icon: 'tabler:git-branch',
-      },
-      {
-        title: 'Bottleneck Analysis',
-        description: 'We identify where work slows down, gets duplicated, or falls through the cracks; and prioritize what to fix first.',
-        icon: 'tabler:zoom-in',
-      },
-      {
-        title: 'Agile & SAFe Implementation',
-        description: 'We design and implement agile frameworks that fit your scale; from small teams adopting Scrum to large enterprises rolling out SAFe.',
-        icon: 'tabler:refresh',
-      },
-      {
-        title: 'Change Management',
-        description: 'New processes only work if people adopt them. We support the human side of change; communication, training, and building habits that stick.',
-        icon: 'tabler:heart-handshake',
-      },
-    ]}
+    items={service.capabilities.map((cap: any) => ({
+      title: cap.title,
+      description: cap.description,
+      icon: cap.icon,
+    }))}
   />
 
   <CallToAction
@@ -55,8 +44,8 @@ const metadata = {
       },
     ]}
   >
-    <Fragment slot="title">Ready to make your organization run better?</Fragment>
-    <Fragment slot="subtitle">Let's find where the friction is and fix it together.</Fragment>
+    <Fragment slot="title">{service.ctaTitle}</Fragment>
+    <Fragment slot="subtitle">{service.ctaSubtitle}</Fragment>
   </CallToAction>
 
 </Layout>

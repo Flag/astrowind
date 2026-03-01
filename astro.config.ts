@@ -9,6 +9,8 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
+import react from '@astrojs/react';
+import sanity from '@sanity/astro';
 import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
@@ -22,7 +24,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'static',
+  output: 'server',
 
   integrations: [
     tailwind({
@@ -30,6 +32,13 @@ export default defineConfig({
     }),
     sitemap(),
     mdx(),
+    react(),
+    sanity({
+      projectId: 'xu9gaiaz',
+      dataset: 'production',
+      useCdn: false,
+      studioBasePath: '/studio',
+    }),
     icon({
       include: {
         tabler: ['*'],
