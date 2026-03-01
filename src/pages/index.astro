@@ -22,33 +22,24 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
-    </Fragment>
+  actions={[
+    {
+      variant: 'primary',
+      text: 'Get in touch',
+      href: '/contact',
+    },
+  ]}
+>
+  <Fragment slot="title">
+    Strategy and execution for teams that need to
+    <span class="text-accent dark:text-white"> move faster</span>
+  </Fragment>
 
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
-    </Fragment>
-  </Hero>
+  <Fragment slot="subtitle">
+    Producentric is a boutique consulting firm helping organizations improve
+    their products, processes, and operations.
+  </Fragment>
+</Hero>
 
   <!-- Note Widget ******************* -->
 
