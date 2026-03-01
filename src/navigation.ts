@@ -58,5 +58,8 @@ export const footerData = {
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
   ],
-  footNote: `Producentric LLC · All rights reserved.`,
+  footNote: `Producentric LTDA<br>
+  Av. Paulista, nº 777, Andar 15, Sala 1447. <br>
+Bairro Bela Vista, São Paulo – SP.<br>
+Brazil. CEP: 01.311-914`,
 };
