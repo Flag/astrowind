@@ -43,23 +43,21 @@ export const footerData = {
       ],
     },
     {
-      title: 'Company',
-      links: [
-        { text: 'Get in Touch', href: getPermalink('/contact') },
-        { text: 'Terms', href: getPermalink('/terms') },
-        { text: 'Privacy Policy', href: getPermalink('/privacy') },
-      ],
-    },
-  ],
-  secondaryLinks: [
+  title: 'Company',
+  links: [
+    { text: 'Get in Touch', href: getPermalink('/contact') },
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
+},
+  ],
+  secondaryLinks: [
+  { text: `Av. Paulista, nº 777, Andar 15, Sala 1447. <br>
+Bairro Bela Vista, São Paulo – SP.<br>
+Brazil. CEP: 01.311-914`, href: '' },
+],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
   ],
-  footNote: `Producentric LTDA<br>
-  Av. Paulista, nº 777, Andar 15, Sala 1447. <br>
-Bairro Bela Vista, São Paulo – SP.<br>
-Brazil. CEP: 01.311-914`,
+  footNote: ``,
 };
