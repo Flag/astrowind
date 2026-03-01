@@ -28,7 +28,7 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
   ],
-  actions: [{ text: 'Get in touch', href: getPermalink('/contact') }],
+  actions: [],
 };
 
 export const footerData = {
