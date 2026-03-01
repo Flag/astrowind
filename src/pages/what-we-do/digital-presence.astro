@@ -1,0 +1,62 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Digital Presence — Producentric',
+};
+---
+
+<Layout {metadata}>
+
+  <HeroText
+    tagline="What We Do"
+    title="Digital Presence"
+    subtitle="We help organizations build and manage a digital footprint that works. From strategy to execution, we bring structure and clarity to how you show up online."
+  />
+
+  <Features
+    title="What this looks like in practice"
+    columns={2}
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    items={[
+      {
+        title: 'Digital Presence Strategy',
+        description: 'We help you define what your digital presence should accomplish, who it is for, and how to measure whether it is working.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Content Operations',
+        description: 'We design content workflows that are sustainable — consistent output without burning out your team or losing quality.',
+        icon: 'tabler:edit',
+      },
+      {
+        title: 'Platform Selection',
+        description: 'We help you choose the right platforms for your goals — not the most popular ones, but the ones that fit your audience and capacity.',
+        icon: 'tabler:device-desktop',
+      },
+      {
+        title: 'Audience Development',
+        description: 'We build strategies for growing the right audience — people who are genuinely interested in what you do and likely to engage.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <CallToAction
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in touch',
+        href: '/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">Ready to build a digital presence that works?</Fragment>
+    <Fragment slot="subtitle">Let's talk about where you want to show up and why.</Fragment>
+  </CallToAction>
+
+</Layout>

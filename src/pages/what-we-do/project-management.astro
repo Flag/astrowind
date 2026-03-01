@@ -1,0 +1,62 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Project Management — Producentric',
+};
+---
+
+<Layout {metadata}>
+
+  <HeroText
+    tagline="What We Do"
+    title="Project Management"
+    subtitle="We keep complex initiatives on track. Clear ownership, realistic timelines, and the discipline to deliver on scope, on budget, and on schedule."
+  />
+
+  <Features
+    title="What this looks like in practice"
+    columns={2}
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    items={[
+      {
+        title: 'Project Governance',
+        description: 'We establish the right level of structure for your initiative — clear roles, decision rights, and escalation paths that keep things moving.',
+        icon: 'tabler:hierarchy',
+      },
+      {
+        title: 'Scope & Schedule Management',
+        description: 'We define what is in and out of scope from day one, build realistic timelines, and actively manage both throughout delivery.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Budget Control',
+        description: 'We track costs with discipline, flag risks early, and make sure financial surprises stay off the table.',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Stakeholder Management',
+        description: 'We keep the right people informed at the right time — clear status updates, no surprises, and alignment across teams.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <CallToAction
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in touch',
+        href: '/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">Need to get a complex initiative back on track?</Fragment>
+    <Fragment slot="subtitle">Let's talk about what's getting in the way.</Fragment>
+  </CallToAction>
+
+</Layout>

@@ -1,0 +1,62 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Product Management — Producentric',
+};
+---
+
+<Layout {metadata}>
+
+  <HeroText
+    tagline="What We Do"
+    title="Product Management"
+    subtitle="We bring product thinking to teams that need direction and momentum. From discovery and ideation through to customer validation, we help you build the right things — and confirm they are working."
+  />
+
+  <Features
+    title="What this looks like in practice"
+    columns={2}
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    items={[
+      {
+        title: 'Product Discovery',
+        description: 'We help you identify the right problems to solve before a single line of code is written. User research, opportunity mapping, and assumption testing.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Roadmap Development',
+        description: 'We build roadmaps that reflect business priorities, customer needs, and technical reality — not wishful thinking.',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Go-to-Market Alignment',
+        description: 'We align product, marketing, and sales around a shared launch plan so nothing falls through the cracks at release time.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Customer Validation',
+        description: 'We close the loop. After launch, we measure whether what you built is actually solving the problem it was designed to solve.',
+        icon: 'tabler:check',
+      },
+    ]}
+  />
+
+  <CallToAction
+    classes={{ container: 'py-6 md:py-8 lg:py-10' }}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in touch',
+        href: '/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">Ready to bring product thinking to your team?</Fragment>
+    <Fragment slot="subtitle">Let's talk about where you are and where you want to go.</Fragment>
+  </CallToAction>
+
+</Layout>
