@@ -56,8 +56,6 @@ export const footerData = {
 Bairro Bela Vista, São Paulo – SP.<br>
 Brazil. CEP: 01.311-914`, href: '' },
 ],
-  socialLinks: [
-    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
-  ],
+  socialLinks: [],
   footNote: ``,
 };
